@@ -12,7 +12,6 @@ export async function updateSession(request: NextRequest) {
   if (!supabaseUrl || !supabaseAnonKey) {
     console.log("[v0] Supabase not configured - auth middleware disabled")
     console.log("[v0] Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in Vars to enable authentication")
-    // Пропускаем все запросы без проверки авторизации
     return supabaseResponse
   }
 
@@ -35,7 +34,11 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // Защищенные маршруты - требуют авторизации
+  const publicPaths = ["/auth/login", "/auth/sign-up", "/auth/verify-email", "/auth/error"]
+  const isPublicPath = publicPaths.some(
+    (path) => request.nextUrl.pathname === path || request.nextUrl.pathname.startsWith(`${path}/`),
+  )
+
   const protectedPaths = ["/", "/calendar", "/settings", "/profile"]
   const isProtectedPath = protectedPaths.some(
     (path) => request.nextUrl.pathname === path || request.nextUrl.pathname.startsWith(`${path}/`),
@@ -47,8 +50,7 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  // Если пользователь авторизован и пытается зайти на страницы auth, перенаправляем на главную
-  if (request.nextUrl.pathname.startsWith("/auth/") && user) {
+  if (user && (request.nextUrl.pathname === "/auth/login" || request.nextUrl.pathname === "/auth/sign-up")) {
     const url = request.nextUrl.clone()
     url.pathname = "/"
     return NextResponse.redirect(url)

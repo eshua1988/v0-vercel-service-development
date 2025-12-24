@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Upload } from "lucide-react"
+import { Upload, Plus, X } from "lucide-react"
 import { useLocale } from "@/lib/locale-context"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
@@ -26,6 +26,7 @@ export function BirthdayForm({ birthday, open, onOpenChange, onSave }: BirthdayF
   const { t } = useLocale()
   const isMobile = useIsMobile()
   const [isLoading, setIsLoading] = useState(false)
+  const [notificationTimes, setNotificationTimes] = useState<string[]>(["09:00"])
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -39,6 +40,12 @@ export function BirthdayForm({ birthday, open, onOpenChange, onSave }: BirthdayF
 
   useEffect(() => {
     if (birthday) {
+      const times =
+        birthday.notification_times && birthday.notification_times.length > 0
+          ? birthday.notification_times
+          : [birthday.notification_time || "09:00"]
+
+      setNotificationTimes(times)
       setFormData({
         first_name: birthday.first_name,
         last_name: birthday.last_name,
@@ -50,6 +57,7 @@ export function BirthdayForm({ birthday, open, onOpenChange, onSave }: BirthdayF
         notification_enabled: birthday.notification_enabled ?? true,
       })
     } else {
+      setNotificationTimes(["09:00"])
       setFormData({
         first_name: "",
         last_name: "",
@@ -68,8 +76,13 @@ export function BirthdayForm({ birthday, open, onOpenChange, onSave }: BirthdayF
     setIsLoading(true)
 
     try {
-      await onSave(formData)
+      await onSave({
+        ...formData,
+        notification_times: notificationTimes,
+        notification_repeat_count: notificationTimes.length,
+      })
       onOpenChange(false)
+      setNotificationTimes(["09:00"])
       setFormData({
         first_name: "",
         last_name: "",
@@ -100,6 +113,27 @@ export function BirthdayForm({ birthday, open, onOpenChange, onSave }: BirthdayF
 
   const initials =
     formData.first_name && formData.last_name ? `${formData.first_name[0]}${formData.last_name[0]}`.toUpperCase() : ""
+
+  const addNotificationTime = () => {
+    if (notificationTimes.length < 5) {
+      setNotificationTimes([...notificationTimes, "09:00"])
+    }
+  }
+
+  const removeNotificationTime = (index: number) => {
+    if (notificationTimes.length > 1) {
+      setNotificationTimes(notificationTimes.filter((_, i) => i !== index))
+    }
+  }
+
+  const updateNotificationTime = (index: number, time: string) => {
+    const newTimes = [...notificationTimes]
+    newTimes[index] = time
+    setNotificationTimes(newTimes)
+    if (index === 0) {
+      setFormData({ ...formData, notification_time: time })
+    }
+  }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -176,18 +210,6 @@ export function BirthdayForm({ birthday, open, onOpenChange, onSave }: BirthdayF
               />
             </div>
 
-            <div className="grid gap-2">
-              <Label htmlFor="notification_time">{t.notificationTime}</Label>
-              <Input
-                id="notification_time"
-                type="time"
-                value={formData.notification_time}
-                onChange={(e) => setFormData({ ...formData, notification_time: e.target.value })}
-                required
-              />
-              <p className="text-xs text-muted-foreground">{t.notificationTimeDescription}</p>
-            </div>
-
             <div className="flex items-center justify-between rounded-lg border p-4">
               <div className="space-y-0.5">
                 <Label htmlFor="notification_enabled" className="cursor-pointer">
@@ -200,6 +222,54 @@ export function BirthdayForm({ birthday, open, onOpenChange, onSave }: BirthdayF
                 checked={formData.notification_enabled}
                 onCheckedChange={(checked) => setFormData({ ...formData, notification_enabled: checked })}
               />
+            </div>
+
+            <div className="grid gap-2">
+              <div className="flex items-center justify-between">
+                <Label>{t.notificationTime}</Label>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={addNotificationTime}
+                  disabled={!formData.notification_enabled || notificationTimes.length >= 5}
+                  className="h-8"
+                >
+                  <Plus className="h-4 w-4 mr-1" />
+                  Добавить время
+                </Button>
+              </div>
+
+              <div className="space-y-2">
+                {notificationTimes.map((time, index) => (
+                  <div key={index} className="flex gap-2 items-center">
+                    <Input
+                      type="time"
+                      value={time}
+                      onChange={(e) => updateNotificationTime(index, e.target.value)}
+                      disabled={!formData.notification_enabled}
+                      className={cn(!formData.notification_enabled && "opacity-50 cursor-not-allowed")}
+                      required
+                    />
+                    {notificationTimes.length > 1 && (
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => removeNotificationTime(index)}
+                        disabled={!formData.notification_enabled}
+                        className="h-10 w-10 shrink-0"
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-xs text-muted-foreground">
+                {t.notificationTimeDescription} (Максимум 5 уведомлений в день)
+              </p>
             </div>
           </div>
 

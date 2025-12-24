@@ -333,7 +333,7 @@ export default function HomePage() {
           onRedo={handleRedo}
         />
 
-        <main className={cn(isMobile ? "p-4 pt-20" : "p-8 ml-16")}>
+        <main className={cn(isMobile ? "p-4 pt-20" : "p-8 ml-16 pt-24 md:ml-16")}>
           <div className="max-w-7xl mx-auto space-y-6">
             <div className="flex flex-col gap-4">
               <div>

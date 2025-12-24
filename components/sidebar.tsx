@@ -83,7 +83,7 @@ export function Sidebar() {
 
         <aside
           className={cn(
-            "fixed left-0 top-0 z-40 h-screen w-64 border-r bg-background transition-transform duration-200 md:hidden",
+            "fixed left-0 top-0 z-50 h-screen w-64 border-r bg-background transition-transform duration-200 md:hidden",
             isOpen ? "translate-x-0" : "-translate-x-full",
           )}
         >
@@ -131,7 +131,7 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="fixed left-0 top-0 z-40 h-screen w-16 border-r bg-background">
+    <aside className="fixed left-0 top-0 z-40 h-screen w-16 border-r bg-background hidden md:block">
       <nav className="flex h-full flex-col items-center py-6 justify-between">
         <div className="flex flex-col items-center gap-4">
           {user && (

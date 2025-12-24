@@ -7,6 +7,8 @@ export interface Birthday {
   phone: string | null
   email: string | null
   notification_time: string
+  notification_times: string[] | null
+  notification_repeat_count: number
   notification_enabled: boolean
   created_at: string
   updated_at: string

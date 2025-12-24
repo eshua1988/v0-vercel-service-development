@@ -1,6 +1,163 @@
-export type Locale = "ru" | "pl" | "uk" | "en" | "ua"
+export type Locale = "ru" | "pl" | "uk" | "en" | "ua" | "be"
 
-export const translations = {
+export type Translations = {
+  appName: string
+  home: string
+  calendar: string
+  settings: string
+  profile: string
+  addMember: string
+  addMultiple: string
+  firstName: string
+  lastName: string
+  birthDate: string
+  phone: string
+  email: string
+  photo: string
+  save: string
+  cancel: string
+  edit: string
+  delete: string
+  viewMode: string
+  cards: string
+  list: string
+  table: string
+  searchPlaceholder: string
+  upcomingBirthdays: string
+  age: string
+  years: string
+  today: string
+  tomorrow: string
+  daysLeft: string
+  noMembers: string
+  noMembersDescription: string
+  language: string
+  confirmDelete: string
+  close: string
+  uploadPhoto: string
+  notificationTime: string
+  notificationTimeDescription: string
+  notificationTimes: string
+  addNotificationTime: string
+  removeNotificationTime: string
+  maxNotificationTimes: string
+  enableNotification: string
+  enableNotificationDescription: string
+  backupAndRestore: string
+  backupDescription: string
+  localBackup: string
+  localBackupDescription: string
+  exportToDevice: string
+  importFromDevice: string
+  googleDriveBackup: string
+  googleDriveBackupDescription: string
+  connectGoogleDrive: string
+  exportToGoogleDrive: string
+  viewBackups: string
+  googleDriveBackups: string
+  googleDriveBackupsDescription: string
+  noBackupsFound: string
+  restore: string
+  confirmRestore: string
+  confirmRestoreDescription: string
+  restoring: string
+  exportSuccess: string
+  exportSuccessDescription: string
+  exportError: string
+  exportErrorDescription: string
+  importSuccess: string
+  importSuccessDescription: string
+  importError: string
+  importErrorDescription: string
+  googleAuthSuccess: string
+  googleAuthSuccessDescription: string
+  googleAuthError: string
+  googleAuthErrorDescription: string
+  googleDriveExportSuccess: string
+  googleDriveExportSuccessDescription: string
+  googleDriveExportError: string
+  googleDriveExportErrorDescription: string
+  tokenExpired: string
+  tokenExpiredDescription: string
+  listFilesError: string
+  listFilesErrorDescription: string
+  deleteSuccess: string
+  deleteSuccessDescription: string
+  deleteError: string
+  deleteErrorDescription: string
+  exportData: string
+  exportDataDescription: string
+  importData: string
+  importDataDescription: string
+  exportPdf: string
+  exportExcel: string
+  importPdf: string
+  importExcel: string
+  logout: string
+  switchAccount: string
+  signInWithGoogle: string
+  signUpWithGoogle: string
+  or: string
+  showPassword: string
+  hidePassword: string
+  fullName: string
+  userProfile: string
+  personalInfo: string
+  changeAvatar: string
+  viewDetails: string
+  memberDetails: string
+  birthDetails: string
+  notificationSettings: string
+  notificationStatus: string
+  notificationStatusDescription: string
+  browserNotifications: string
+  allowed: string
+  blocked: string
+  notConfigured: string
+  firebaseCloudMessaging: string
+  configured: string
+  notConfiguredOptional: string
+  fcmToken: string
+  firebaseAdvancedFeatures: string
+  seeDocumentation: string
+  howToGetFcmToken: string
+  step1EnableNotifications: string
+  step1Description: string
+  step2RefreshPage: string
+  step2Description: string
+  step3ViewToken: string
+  step3Description: string
+  alternativeMethod: string
+  chromeSettings: string
+  fcmTokenSuccess: string
+  fcmTokenSuccessDescription: string
+  copyToken: string
+  tokenCopied: string
+  appVersion: string
+  appVersionDescription: string
+  currentVersion: string
+  lastUpdated: string
+  viewChangelog: string
+  welcomeTitle: string
+  welcomeSubtitle: string
+  welcomeDescription: string
+  welcomeFeature1: string
+  welcomeFeature1Desc: string
+  welcomeFeature2: string
+  welcomeFeature2Desc: string
+  welcomeFeature3: string
+  welcomeFeature3Desc: string
+  getStarted: string
+  alreadyHaveAccount: string
+  signIn: string
+  loading: string
+  verifyEmailTitle: string
+  verifyEmailSubtitle: string
+  verifyEmailDescription: string
+  backToWelcome: string
+}
+
+export const translations: Record<Locale, Translations> = {
   ru: {
     appName: "Дни Рождения",
     home: "Главная",
@@ -38,6 +195,10 @@ export const translations = {
     uploadPhoto: "Загрузить фото",
     notificationTime: "Время оповещения",
     notificationTimeDescription: "Во сколько отправить напоминание о дне рождения",
+    notificationTimes: "Времена оповещений",
+    addNotificationTime: "Добавить время",
+    removeNotificationTime: "Удалить время",
+    maxNotificationTimes: "Максимум 5 уведомлений в день",
     enableNotification: "Включить оповещение",
     enableNotificationDescription: "Получать напоминание о дне рождения этого человека",
     backupAndRestore: "Резервное копирование",
@@ -136,6 +297,24 @@ export const translations = {
     currentVersion: "Текущая версия",
     lastUpdated: "Последнее обновление",
     viewChangelog: "Посмотреть список изменений",
+    welcomeTitle: "Дни Рождения",
+    welcomeSubtitle: "Никогда не забывайте о важных датах",
+    welcomeDescription: "Управляйте днями рождения членов вашей церкви. Получайте напоминания в нужное время.",
+    welcomeFeature1: "Напоминания о днях рождения",
+    welcomeFeature1Desc: "Получайте уведомления в установленное время",
+    welcomeFeature2: "Календарь событий",
+    welcomeFeature2Desc: "Просматривайте все дни рождения в календаре",
+    welcomeFeature3: "Резервное копирование",
+    welcomeFeature3Desc: "Автоматическое сохранение данных",
+    getStarted: "Начать",
+    alreadyHaveAccount: "Уже есть аккаунт?",
+    signIn: "Войти",
+    loading: "Загрузка...",
+    verifyEmailTitle: "Проверьте почту",
+    verifyEmailSubtitle: "Мы отправили вам письмо с подтверждением",
+    verifyEmailDescription:
+      "Пожалуйста, проверьте вашу электронную почту и перейдите по ссылке для подтверждения аккаунта. После подтверждения вы сможете войти в систему.",
+    backToWelcome: "Вернуться на главную",
   },
   pl: {
     appName: "Urodziny",
@@ -174,6 +353,10 @@ export const translations = {
     uploadPhoto: "Prześlij zdjęcie",
     notificationTime: "Czas powiadomienia",
     notificationTimeDescription: "O której godzinie wysłać przypomnienie o urodzinach",
+    notificationTimes: "Czasy powiadomień",
+    addNotificationTime: "Dodaj czas",
+    removeNotificationTime: "Usuń czas",
+    maxNotificationTimes: "Maksymalnie 5 powiadomień dziennie",
     enableNotification: "Włącz powiadomienia",
     enableNotificationDescription: "Otrzymuj przypomnienie o urodzinach tej osoby",
     backupAndRestore: "Kopia zapasowa i przywracanie",
@@ -272,6 +455,24 @@ export const translations = {
     currentVersion: "Aktualna wersja",
     lastUpdated: "Ostatnia aktualizacja",
     viewChangelog: "Zobacz listę zmian",
+    welcomeTitle: "Urodziny",
+    welcomeSubtitle: "Nigdy nie zapomnij o ważnych datach",
+    welcomeDescription: "Zarządzaj urodzinami członków twojego kościoła. Otrzymuj przypomnienia we właściwym czasie.",
+    welcomeFeature1: "Przypomnienia o urodzinach",
+    welcomeFeature1Desc: "Otrzymuj powiadomienia o ustawionym czasie",
+    welcomeFeature2: "Kalendarz wydarzeń",
+    welcomeFeature2Desc: "Przeglądaj wszystkie urodziny w kalendarzu",
+    welcomeFeature3: "Kopia zapasowa",
+    welcomeFeature3Desc: "Automatyczne zapisywanie danych",
+    getStarted: "Rozpocznij",
+    alreadyHaveAccount: "Masz już konto?",
+    signIn: "Zaloguj",
+    loading: "Ładowanie...",
+    verifyEmailTitle: "Sprawdź pocztę",
+    verifyEmailSubtitle: "Wysłaliśmy Ci e-mail z potwierdzeniem",
+    verifyEmailDescription:
+      "Proszę sprawdzić swoją pocztę elektroniczną i kliknąć link potwierdzający. Po potwierdzeniu będziesz mógł zalogować się do systemu.",
+    backToWelcome: "Powrót do strony głównej",
   },
   uk: {
     appName: "Дні Народження",
@@ -310,11 +511,15 @@ export const translations = {
     uploadPhoto: "Завантажити фото",
     notificationTime: "Час сповіщення",
     notificationTimeDescription: "О котрій відправити нагадування про день народження",
+    notificationTimes: "Часи сповіщень",
+    addNotificationTime: "Додати час",
+    removeNotificationTime: "Видалити час",
+    maxNotificationTimes: "Максимум 5 сповіщень на день",
     enableNotification: "Увімкнути сповіщення",
     enableNotificationDescription: "Отримувати нагадування про день народження цієї людини",
     backupAndRestore: "Резервне копіювання",
     backupDescription: "Експортуйте та імпортуйте всі дані про дні народження та налаштування",
-    localBackup: "Локальне резервне копіювання",
+    localBackup: "Локальне резервное копіювання",
     localBackupDescription: "Збережіть дані на ваш пристрій у вигляді JSON файлу",
     exportToDevice: "Експорт на пристрій",
     importFromDevice: "Імпорт з пристрою",
@@ -407,6 +612,181 @@ export const translations = {
     currentVersion: "Поточна версія",
     lastUpdated: "Останнє оновлення",
     viewChangelog: "Переглянути список змін",
+    welcomeTitle: "Дні Народження",
+    welcomeSubtitle: "Ніколи не забувайте про важливі дати",
+    welcomeDescription: "Керуйте днями народження членів вашої церкви. Отримуйте нагадування у потрібний час.",
+    welcomeFeature1: "Нагадування про дні народження",
+    welcomeFeature1Desc: "Отримуйте сповіщення у встановлений час",
+    welcomeFeature2: "Календар подій",
+    welcomeFeature2Desc: "Переглядайте всі дні народження в календарі",
+    welcomeFeature3: "Резервне копіювання",
+    welcomeFeature3Desc: "Автоматичне збереження даних",
+    getStarted: "Почати",
+    alreadyHaveAccount: "Вже є акаунт?",
+    signIn: "Увійти",
+    loading: "Завантаження...",
+    verifyEmailTitle: "Перевірте пошту",
+    verifyEmailSubtitle: "Ми надіслали вам лист з підтвердженням",
+    verifyEmailDescription:
+      "Будь ласка, перевірте вашу електронну пошту та перейдіть за посиланням для підтвердження акаунту. Після підтвердження ви зможете увійти в систему.",
+    backToWelcome: "Повернутися на головну",
+  },
+  ua: {
+    appName: "Дні Народження",
+    home: "Головна",
+    calendar: "Календар",
+    settings: "Налаштування",
+    profile: "Профіль",
+    addMember: "Додати учасника",
+    addMultiple: "Додати кількох",
+    firstName: "Ім'я",
+    lastName: "Прізвище",
+    birthDate: "Дата народження",
+    phone: "Телефон",
+    email: "Електронна пошта",
+    photo: "Фото",
+    save: "Зберегти",
+    cancel: "Скасувати",
+    edit: "Редагувати",
+    delete: "Видалити",
+    viewMode: "Режим перегляду",
+    cards: "Картки",
+    list: "Список",
+    table: "Таблиця",
+    searchPlaceholder: "Пошук за ім'ям...",
+    upcomingBirthdays: "Найближчі дні народження",
+    age: "Вік",
+    years: "років",
+    today: "Сьогодні",
+    tomorrow: "Завтра",
+    daysLeft: "днів",
+    noMembers: "Немає учасників",
+    noMembersDescription: "Додайте першого учасника церкви",
+    language: "Мова",
+    confirmDelete: "Ви впевнені, що хочете видалити цього учасника?",
+    close: "Закрити",
+    uploadPhoto: "Завантажити фото",
+    notificationTime: "Час сповіщення",
+    notificationTimeDescription: "О котрій відправити нагадування про день народження",
+    notificationTimes: "Часи сповіщень",
+    addNotificationTime: "Додати час",
+    removeNotificationTime: "Видалити час",
+    maxNotificationTimes: "Максимум 5 сповіщень на день",
+    enableNotification: "Увімкнути сповіщення",
+    enableNotificationDescription: "Отримувати нагадування про день народження цієї людини",
+    backupAndRestore: "Резервне копіювання",
+    backupDescription: "Експортуйте та імпортуйте всі дані про дні народження та налаштування",
+    localBackup: "Локальне резервне копіювання",
+    localBackupDescription: "Збережіть дані на ваш пристрій у вигляді JSON файлу",
+    exportToDevice: "Експорт на пристрій",
+    importFromDevice: "Імпорт з пристрою",
+    googleDriveBackup: "Google Drive",
+    googleDriveBackupDescription: "Зберігайте резервні копії в хмарі та відновлюйте їх на будь-якому пристрої",
+    connectGoogleDrive: "Підключити Google Drive",
+    exportToGoogleDrive: "Експорт в Google Drive",
+    viewBackups: "Переглянути резервні копії",
+    googleDriveBackups: "Резервні копії в Google Drive",
+    googleDriveBackupsDescription: "Виберіть резервну копію для відновлення або видалення",
+    noBackupsFound: "Резервні копії не знайдено",
+    restore: "Відновити",
+    confirmRestore: "Підтвердіть відновлення",
+    confirmRestoreDescription: "Всі поточні дані будуть замінені даними з резервної копії. Цю дію неможливо скасувати.",
+    restoring: "Відновлення...",
+    exportSuccess: "Експорт успішний",
+    exportSuccessDescription: "Дані збережено на ваш пристрій",
+    exportError: "Помилка експорту",
+    exportErrorDescription: "Не вдалося експортувати дані",
+    importSuccess: "Імпорт успішний",
+    importSuccessDescription: "Дані успішно відновлено",
+    importError: "Помилка імпорту",
+    importErrorDescription: "Не вдалося імпортувати дані",
+    googleAuthSuccess: "Авторизація успішна",
+    googleAuthSuccessDescription: "Підключено до Google Drive",
+    googleAuthError: "Помилка авторизації",
+    googleAuthErrorDescription: "Не вдалося підключитися до Google Drive",
+    googleDriveExportSuccess: "Експорт в Google Drive успішний",
+    googleDriveExportSuccessDescription: "Резервна копія збережена в Google Drive",
+    googleDriveExportError: "Помилка експорту в Google Drive",
+    googleDriveExportErrorDescription: "Не вдалося зберегти в Google Drive",
+    tokenExpired: "Сеанс закінчився",
+    tokenExpiredDescription: "Будь ласка, авторизуйтесь знову",
+    listFilesError: "Помилка",
+    listFilesErrorDescription: "Не вдалося отримати список файлів",
+    deleteSuccess: "Файл видалено",
+    deleteSuccessDescription: "Резервна копія видалена з Google Drive",
+    deleteError: "Помилка видалення",
+    deleteErrorDescription: "Не вдалося видалити файл",
+    exportData: "Експорт даних",
+    exportDataDescription: "Збережіть дані на ваш пристрій у різних форматах",
+    importData: "Імпорт даних",
+    importDataDescription: "Відновіть дані з файлів резервних копій",
+    exportPdf: "Експорт в PDF",
+    exportExcel: "Експорт в Excel",
+    importPdf: "PDF",
+    importExcel: "Excel",
+    logout: "Вийти",
+    switchAccount: "Змінити акаунт",
+    signInWithGoogle: "Увійти через Google",
+    signUpWithGoogle: "Зареєструватися через Google",
+    or: "або",
+    showPassword: "Показати пароль",
+    hidePassword: "Сховати пароль",
+    fullName: "Повне ім'я",
+    userProfile: "Профіль користувача",
+    personalInfo: "Особиста інформація",
+    changeAvatar: "Змінити фото",
+    viewDetails: "Переглянути деталі",
+    memberDetails: "Інформація про учасника",
+    birthDetails: "Деталі дня народження",
+    notificationSettings: "Налаштування сповіщень",
+    notificationStatus: "Статус сповіщень",
+    notificationStatusDescription: "Перевірка конфігурації системи сповіщень",
+    browserNotifications: "Браузерні сповіщення",
+    allowed: "Дозволено",
+    blocked: "Заблоковано",
+    notConfigured: "Не налаштовано",
+    firebaseCloudMessaging: "Firebase Cloud Messaging",
+    configured: "Налаштовано",
+    notConfiguredOptional: "Не налаштовано (опціонально)",
+    fcmToken: "FCM Token",
+    firebaseAdvancedFeatures: "Для розширених функцій push-сповіщень налаштуйте Firebase Cloud Messaging",
+    seeDocumentation: "Див. FIREBASE_SETUP.md",
+    howToGetFcmToken: "Як отримати FCM токен на телефоні",
+    step1EnableNotifications: "Крок 1: Дозвольте сповіщення",
+    step1Description: "Натисніть на значок замка поруч з адресою сайту → Сповіщення → Дозволити",
+    step2RefreshPage: "Крок 2: Оновіть сторінку",
+    step2Description: "Після дозволу на сповіщення перезавантажте сторінку для отримання FCM токена",
+    step3ViewToken: "Крок 3: Знайдіть токен",
+    step3Description: "FCM токен з'явиться нижче після успішного отримання дозволів",
+    alternativeMethod: "Альтернативний спосіб для Android",
+    chromeSettings: "Налаштування Chrome → Налаштування сайтів → Сповіщення → Знайдіть ваш сайт → Дозволити",
+    fcmTokenSuccess: "FCM токен успішно отримано!",
+    fcmTokenSuccessDescription: "Ви можете скопіювати токен нижче для відлагодження або тестування",
+    copyToken: "Копіювати токен",
+    tokenCopied: "Токен скопійовано",
+    appVersion: "App Version",
+    appVersionDescription: "Information about the current application version",
+    currentVersion: "Current Version",
+    lastUpdated: "Last Updated",
+    viewChangelog: "View Changelog",
+    welcomeTitle: "Birthdays",
+    welcomeSubtitle: "Never forget important dates",
+    welcomeDescription: "Manage birthdays of your church members. Get reminders at the right time.",
+    welcomeFeature1: "Birthday Reminders",
+    welcomeFeature1Desc: "Receive notifications at the set time",
+    welcomeFeature2: "Event Calendar",
+    welcomeFeature2Desc: "View all birthdays in calendar",
+    welcomeFeature3: "Backup",
+    welcomeFeature3Desc: "Automatic data saving",
+    getStarted: "Get Started",
+    alreadyHaveAccount: "Already have an account?",
+    signIn: "Sign In",
+    loading: "Завантаження...",
+    verifyEmailTitle: "Перевірте пошту",
+    verifyEmailSubtitle: "Ми надіслали вам лист з підтвердженням",
+    verifyEmailDescription:
+      "Будь ласка, перевірте вашу електронну пошту та перейдіть за посиланням для підтвердження акаунту. Після підтвердження ви зможете увійти в систему.",
+    backToWelcome: "Повернутися на головну",
   },
   en: {
     appName: "Birthdays",
@@ -445,6 +825,10 @@ export const translations = {
     uploadPhoto: "Upload Photo",
     notificationTime: "Notification Time",
     notificationTimeDescription: "When to send birthday reminder",
+    notificationTimes: "Notification Times",
+    addNotificationTime: "Add Time",
+    removeNotificationTime: "Remove Time",
+    maxNotificationTimes: "Maximum 5 notifications per day",
     enableNotification: "Enable Notification",
     enableNotificationDescription: "Receive reminder for this person's birthday",
     backupAndRestore: "Backup and Restore",
@@ -543,141 +927,182 @@ export const translations = {
     currentVersion: "Current Version",
     lastUpdated: "Last Updated",
     viewChangelog: "View Changelog",
+    welcomeTitle: "Birthdays",
+    welcomeSubtitle: "Never forget important dates",
+    welcomeDescription: "Manage birthdays of your church members. Get reminders at the right time.",
+    welcomeFeature1: "Birthday Reminders",
+    welcomeFeature1Desc: "Receive notifications at the set time",
+    welcomeFeature2: "Event Calendar",
+    welcomeFeature2Desc: "View all birthdays in calendar",
+    welcomeFeature3: "Backup",
+    welcomeFeature3Desc: "Automatic data saving",
+    getStarted: "Get Started",
+    alreadyHaveAccount: "Already have an account?",
+    signIn: "Sign In",
+    loading: "Loading...",
+    verifyEmailTitle: "Check Your Email",
+    verifyEmailSubtitle: "We sent you a confirmation email",
+    verifyEmailDescription:
+      "Please check your email and click the confirmation link. After confirming, you'll be able to log in to the system.",
+    backToWelcome: "Back to Welcome",
   },
-  ua: {
-    appName: "Дні Народження",
-    home: "Головна",
+  be: {
+    appName: "Дні Нараджэнні",
+    home: "Галоўная",
     calendar: "Календар",
-    settings: "Налаштування",
+    settings: "Налаштыванні",
     profile: "Профіль",
-    addMember: "Додати учасника",
-    addMultiple: "Додати кількох",
-    firstName: "Ім'я",
-    lastName: "Прізвище",
-    birthDate: "Дата народження",
-    phone: "Телефон",
-    email: "Електронна пошта",
-    photo: "Фото",
-    save: "Зберегти",
-    cancel: "Скасувати",
-    edit: "Редагувати",
-    delete: "Видалити",
-    viewMode: "Режим перегляду",
-    cards: "Картки",
-    list: "Список",
-    table: "Таблиця",
-    searchPlaceholder: "Пошук за ім'ям...",
-    upcomingBirthdays: "Найближчі дні народження",
-    age: "Вік",
-    years: "років",
-    today: "Сьогодні",
-    tomorrow: "Завтра",
-    daysLeft: "днів",
-    noMembers: "Немає учасників",
-    noMembersDescription: "Додайте першого учасника церкви",
+    addMember: "Дадаць члена",
+    addMultiple: "Дадаць некалькі",
+    firstName: "Імя",
+    lastName: "Прызвішча",
+    birthDate: "Дата народжэнні",
+    phone: "Тэлефон",
+    email: "Электронная пошта",
+    photo: "Фота",
+    save: "Захаваць",
+    cancel: "Адмена",
+    edit: "Рэдагаваць",
+    delete: "Выдалі",
+    viewMode: "Рэжым пагляду",
+    cards: "Карточки",
+    list: "Спіс",
+    table: "Табліца",
+    searchPlaceholder: "Пошук па імё...",
+    upcomingBirthdays: "Падходзічныя дні народжэнні",
+    age: "Возраст",
+    years: "годкав",
+    today: "Сёння",
+    tomorrow: "Утру",
+    daysLeft: "дзёнкав",
+    noMembers: "Нема членов",
+    noMembersDescription: "Дадаць першага члена церквы",
     language: "Мова",
-    confirmDelete: "Ви впевнені, що хочете видалити цього учасника?",
-    close: "Закрити",
-    uploadPhoto: "Завантажити фото",
-    notificationTime: "Час сповіщення",
-    notificationTimeDescription: "О котрій відправити нагадування про день народження",
-    enableNotification: "Увімкнути сповіщення",
-    enableNotificationDescription: "Отримувати нагадування про день народження цієї людини",
-    backupAndRestore: "Резервне копіювання",
-    backupDescription: "Експортуйте та імпортуйте всі дані про дні народження та налаштування",
-    localBackup: "Локальне резервне копіювання",
-    localBackupDescription: "Збережіть дані на ваш пристрій у вигляді JSON файлу",
-    exportToDevice: "Експорт на пристрій",
-    importFromDevice: "Імпорт з пристрою",
+    confirmDelete: "Вы падтываеце выдалі ціх члена?",
+    close: "Закрыць",
+    uploadPhoto: "Загрузіць фото",
+    notificationTime: "Час спавіщення",
+    notificationTimeDescription: "Калі выслаць падзісці аб дню народжэнні",
+    notificationTimes: "Часы спавіщэнні",
+    addNotificationTime: "Дадаць час",
+    removeNotificationTime: "Выдалі час",
+    maxNotificationTimes: "Максімум 5 спавіщэнніў у дзень",
+    enableNotification: "Уключыць спавіщенні",
+    enableNotificationDescription: "Падзісці аб дню народжэнні гэтага члена",
+    backupAndRestore: "Резервная копія і адрэстывае",
+    backupDescription: "Экспартавае і імпартавае ўсё дадзеныя аб днях народжэнні і наладжанні",
+    localBackup: "Лакальна резервная копія",
+    localBackupDescription: "Захавае дадзеныя на вашым прыстрым у фармате JSON файла",
+    exportToDevice: "Экспартавае на прыстрым",
+    importFromDevice: "Імпартавае з прыстрыма",
     googleDriveBackup: "Google Drive",
-    googleDriveBackupDescription: "Зберігайте резервні копії в хмарі та відновлюйте їх на будь-якому пристрої",
-    connectGoogleDrive: "Підключити Google Drive",
-    exportToGoogleDrive: "Експорт в Google Drive",
-    viewBackups: "Переглянути резервні копії",
-    googleDriveBackups: "Резервні копії в Google Drive",
-    googleDriveBackupsDescription: "Виберіть резервну копію для відновлення або видалення",
-    noBackupsFound: "Резервні копії не знайдено",
-    restore: "Відновити",
-    confirmRestore: "Підтвердіть відновлення",
-    confirmRestoreDescription: "Всі поточні дані будуть замінені даними з резервної копії. Цю дію неможливо скасувати.",
-    restoring: "Відновлення...",
-    exportSuccess: "Експорт успішний",
-    exportSuccessDescription: "Дані збережено на ваш пристрій",
-    exportError: "Помилка експорту",
-    exportErrorDescription: "Не вдалося експортувати дані",
-    importSuccess: "Імпорт успішний",
-    importSuccessDescription: "Дані успішно відновлено",
-    importError: "Помилка імпорту",
-    importErrorDescription: "Не вдалося імпортувати дані",
-    googleAuthSuccess: "Авторизація успішна",
-    googleAuthSuccessDescription: "Підключено до Google Drive",
-    googleAuthError: "Помилка авторизації",
-    googleAuthErrorDescription: "Не вдалося підключитися до Google Drive",
-    googleDriveExportSuccess: "Експорт в Google Drive успішний",
-    googleDriveExportSuccessDescription: "Резервна копія збережена в Google Drive",
-    googleDriveExportError: "Помилка експорту в Google Drive",
-    googleDriveExportErrorDescription: "Не вдалося зберегти в Google Drive",
-    tokenExpired: "Сеанс закінчився",
-    tokenExpiredDescription: "Будь ласка, авторизуйтесь знову",
-    listFilesError: "Помилка",
-    listFilesErrorDescription: "Не вдалося отримати список файлів",
-    deleteSuccess: "Файл видалено",
-    deleteSuccessDescription: "Резервна копія видалена з Google Drive",
-    deleteError: "Помилка видалення",
-    deleteErrorDescription: "Не вдалося видалити файл",
-    exportData: "Експорт даних",
-    exportDataDescription: "Збережіть дані на ваш пристрій у різних форматах",
-    importData: "Імпорт даних",
-    importDataDescription: "Відновіть дані з файлів резервних копій",
-    exportPdf: "Експорт в PDF",
-    exportExcel: "Експорт в Excel",
+    googleDriveBackupDescription: "Захавае резервныя копіі ў хмарні і адрэстывае іх на любым прыстрыме",
+    connectGoogleDrive: "Падключыць Google Drive",
+    exportToGoogleDrive: "Экспартавае ў Google Drive",
+    viewBackups: "Паглядзе резервных копій",
+    googleDriveBackups: "Резервных копій у Google Drive",
+    googleDriveBackupsDescription: "Выберыце резервную копію для адрэстывае або выдалі",
+    noBackupsFound: "Резервных копій не знайдзены",
+    restore: "Адрэстывае",
+    confirmRestore: "Падтывае адрэстывае",
+    confirmRestoreDescription:
+      "Усё актуальныя дадзеныя буду заменены дадзенымі з резерўнай копіі. Гэта дзеянне не можна адмені.",
+    restoring: "Адрэстывае...",
+    exportSuccess: "Экспарт паспяховы",
+    exportSuccessDescription: "Дадзеныя захаваны на вашым прыстрым",
+    exportError: "Памылка экспарту",
+    exportErrorDescription: "Не паспяхова выйшла экспарт дадзеных",
+    importSuccess: "Імпарт паспяховы",
+    importSuccessDescription: "Дадзеныя паспяхова адрэстывае",
+    importError: "Памылка імпарту",
+    importErrorDescription: "Не паспяхова выйшла імпарт дадзеных",
+    googleAuthSuccess: "Аўтарызацыя паспяхова",
+    googleAuthSuccessDescription: "Падключены да Google Drive",
+    googleAuthError: "Памылка аўтарызацыі",
+    googleAuthErrorDescription: "Не паспяхова выйшла падключэнне да Google Drive",
+    googleDriveExportSuccess: "Экспарт у Google Drive паспяховы",
+    googleDriveExportSuccessDescription: "Резервная копія захаваны ў Google Drive",
+    googleDriveExportError: "Памылка экспарту у Google Drive",
+    googleDriveExportErrorDescription: "Не паспяхова выйшла захаванне ў Google Drive",
+    tokenExpired: "Сэсія скончана",
+    tokenExpiredDescription: "Калі ласка, аўтарызаце зноў",
+    listFilesError: "Памылка",
+    listFilesErrorDescription: "Не паспяхова выйшла атрыманне спісу файлов",
+    deleteSuccess: "Файл выдалены",
+    deleteSuccessDescription: "Резервная копія выдалена з Google Drive",
+    deleteError: "Памылка выдаленні",
+    deleteErrorDescription: "Не паспяхова выйшла выдаленні файла",
+    exportData: "Экспарт дадзеных",
+    exportDataDescription: "Захавае дадзеныя на вашым прыстрым у розніх фарматах",
+    importData: "Імпорт дадзеных",
+    importDataDescription: "Адрэстывае дадзеныя з файлаў резервных копій",
+    exportPdf: "Экспарт у PDF",
+    exportExcel: "Экспарт у Excel",
     importPdf: "PDF",
     importExcel: "Excel",
-    logout: "Вийти",
-    switchAccount: "Змінити акаунт",
-    signInWithGoogle: "Увійти через Google",
-    signUpWithGoogle: "Зареєструватися через Google",
+    logout: "Выйсці",
+    switchAccount: "Змяніце акаунт",
+    signInWithGoogle: "Увайсьці праз Google",
+    signUpWithGoogle: "Зарэгіструйце праз Google",
     or: "або",
-    showPassword: "Показати пароль",
-    hidePassword: "Сховати пароль",
-    fullName: "Повне ім'я",
-    userProfile: "Профіль користувача",
-    personalInfo: "Особиста інформація",
-    changeAvatar: "Змінити фото",
-    viewDetails: "Переглянути деталі",
-    memberDetails: "Інформація про учасника",
-    birthDetails: "Деталі дня народження",
-    notificationSettings: "Налаштування сповіщень",
-    notificationStatus: "Статус сповіщень",
-    notificationStatusDescription: "Перевірка конфігурації системи сповіщень",
-    browserNotifications: "Браузерні сповіщення",
-    allowed: "Дозволено",
-    blocked: "Заблоковано",
-    notConfigured: "Не налаштовано",
+    showPassword: "Паказаць пароль",
+    hidePassword: "Схаваць пароль",
+    fullName: "Паўне імя",
+    userProfile: "Профіль карыстэльніка",
+    personalInfo: "Беседнікная інфармацыя",
+    changeAvatar: "Змяніце фото",
+    viewDetails: "Паглядзе дэталей",
+    memberDetails: "Інфармацыя аб члена",
+    birthDetails: "Дэталі дня народжэнні",
+    notificationSettings: "Налаштыванні спавіщэнні",
+    notificationStatus: "Статус спавіщэнні",
+    notificationStatusDescription: "Праверка канфігурацыі сістэмы спавіщэнні",
+    browserNotifications: "Спавіщэнні браўзера",
+    allowed: "Дазволены",
+    blocked: "Заблокаваны",
+    notConfigured: "Не канфігураваны",
     firebaseCloudMessaging: "Firebase Cloud Messaging",
-    configured: "Налаштовано",
-    notConfiguredOptional: "Не налаштовано (опціонально)",
+    configured: "Канфігураваны",
+    notConfiguredOptional: "Не канфігураваны (адрозненнавы)",
     fcmToken: "FCM Token",
-    firebaseAdvancedFeatures: "Для розширених функцій push-сповіщень налаштуйте Firebase Cloud Messaging",
-    seeDocumentation: "Див. FIREBASE_SETUP.md",
-    howToGetFcmToken: "Як отримати FCM токен на телефоні",
-    step1EnableNotifications: "Крок 1: Дозвольте сповіщення",
-    step1Description: "Натисніть на значок замка поруч з адресою сайту → Сповіщення → Дозволити",
-    step2RefreshPage: "Крок 2: Оновіть сторінку",
-    step2Description: "Після дозволу на сповіщення перезавантажте сторінку для отримання FCM токена",
-    step3ViewToken: "Крок 3: Знайдіть токен",
-    step3Description: "FCM токен з'явиться нижче після успішного отримання дозволів",
-    alternativeMethod: "Альтернативний спосіб для Android",
-    chromeSettings: "Налаштування Chrome → Налаштування сайтів → Сповіщення → Знайдіть ваш сайт → Дозволити",
-    fcmTokenSuccess: "FCM токен успішно отримано!",
-    fcmTokenSuccessDescription: "Ви можете скопіювати токен нижче для відлагодження або тестування",
-    copyToken: "Копіювати токен",
-    tokenCopied: "Токен скопійовано",
-    appVersion: "App Version",
-    appVersionDescription: "Information about the current application version",
-    currentVersion: "Current Version",
-    lastUpdated: "Last Updated",
-    viewChangelog: "View Changelog",
+    firebaseAdvancedFeatures: "Для расшырэнных функцыяў пуш-спавіщэнні канфігуравае Firebase Cloud Messaging",
+    seeDocumentation: "Дзеянні FIREBASE_SETUP.md",
+    howToGetFcmToken: "Як атрымае FCM токен на тэлефоне",
+    step1EnableNotifications: "Крок 1: Дазволіце спавіщэнні",
+    step1Description: "Націскніце на значок замка падзеце сайту → Спавіщэнні → Дазволіце",
+    step2RefreshPage: "Крок 2: Абнавіце старонку",
+    step2Description: "Пасля дазволу спавіщэнні перезагрузіце старонку для атрымання FCM токена",
+    step3ViewToken: "Крок 3: Знайдзіце токен",
+    step3Description: "FCM токен пявіся нижэй пасля паспяхова атрымання дазволуў",
+    alternativeMethod: "Альтэрнатывны спосіб для Android",
+    chromeSettings: "Налаштыванні Chrome → Налаштыванні сайтов → Спавіщэнні → Знайдзіце ваш сайт → Дазволіце",
+    fcmTokenSuccess: "FCM токен паспяхова атрыманы!",
+    fcmTokenSuccessDescription: "Вы можаце скапіравае токен нижэй для адладкі або тэставанні",
+    copyToken: "Капіравае токен",
+    tokenCopied: "Токен скапіраваны",
+    appVersion: "Версія праграмы",
+    appVersionDescription: "Інфармацыя аб бягучай версіі праграмы",
+    currentVersion: "Бягучая версія",
+    lastUpdated: "Апошнія абнавленні",
+    viewChangelog: "Паглядзе спісу змен",
+    welcomeTitle: "Дні Нараджэнні",
+    welcomeSubtitle: "Ніколі не забывайце пра важныя даты",
+    welcomeDescription: "Кіруйце днямі нараджэнні членаў вашай царквы. Атрымлівайце нагаданні ў патрэбны час.",
+    welcomeFeature1: "Нагаданні пра дні нараджэнні",
+    welcomeFeature1Desc: "Атрымлівайце апавяшчэнні ў ўстаноўлены час",
+    welcomeFeature2: "Каляндар падзей",
+    welcomeFeature2Desc: "Праглядайце ўсе дні нараджэнні ў календары",
+    welcomeFeature3: "Рэзервовае капіяванне",
+    welcomeFeature3Desc: "Аўтаматычнае захаванне дадзеных",
+    getStarted: "Пачаць",
+    alreadyHaveAccount: "Ужо ёсць акаўнт?",
+    signIn: "Увайсці",
+    loading: "Загрузка...",
+    verifyEmailTitle: "Праверце пошту",
+    verifyEmailSubtitle: "Мы адправілі вам ліст з пацверджаннем",
+    verifyEmailDescription:
+      "Калі ласка, праверце вашу электронную пошту і перайдзіце па спасылцы для пацверджання акаўнта. Пасля пацверджання вы зможаце ўвайсці ў сістэму.",
+    backToWelcome: "Вярнуцца на галоўную",
   },
 }
 
